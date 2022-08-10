@@ -1,0 +1,88 @@
+package javaapplication11;
+
+//import java.io.*;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+//Inheritance 
+
+    public class Employee{
+        
+        String name; 
+        String doj;
+        double salary;
+        Employee(String n,String d,double s){
+            name=n;
+            salary=s;
+        }
+        //Employee(){}
+        public String getName(){return name;}
+        public void setName(String n){name=n;}
+        public String getDoj(){return doj;}
+        public void setDoj(String d){doj=d;}
+        public double getSalary(){return salary;}
+        public void setSalary(double s){salary=s;}
+        public double increment(double percentage){
+             salary+=salary*percentage/100;
+             return salary;
+        }
+    }
+
+    class Manager extends Employee{
+        
+       double bonus;
+        Manager(String n,String d,double s,double b){
+            super(n,d,s);
+            bonus=b;
+        }
+        
+      public void  setBonus(double b){
+            bonus=b;
+        }
+      public double getSalary(){
+        return super.getSalary()+bonus;
+    }
+      
+    }
+    
+    
+    
+
+
+/*class InheritanceEmployee{
+    public static void main(String[] args) {
+        Employee employees = new Employee("ram","7th oct",32000);
+        employees.increment(10);
+        System.out.print(employees.getName()+" "+employees.getSalary());
+        
+        
+    }
+    
+}*/
+  class InheritanceEmployee{
+    public static void main(String[] args) {
+      //  Employee employees = new Employee("ram","7th oct",32000);
+      
+        Manager m1= new Manager("john","2nd feb",88000,0.0);
+        m1.setBonus(20000);
+        Employee[] employees = new Employee[4];
+        employees[0]= new Employee("Mottu","8th feb",42000);
+        employees[1]= new Employee("raju","7th oct",65000);
+        employees[2]= new Employee("Mithran","7th oct",74000);
+        employees[3]= m1;
+        
+        employees[2].increment(10);
+      // System.out.print(m1.getSalary());
+        
+        for(Employee e:employees)//dynamic binding
+        {
+            System.out.print(e.getName()+" "+e.getSalary()+"\n");
+        }
+        
+        
+    }
+        
+        
+    }
+    
